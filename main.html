@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/reset.css" />
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="container">
+        <div class="nav__wrapper">
+          <img src="./image/Logo.svg" alt="Logo" class="nav__logo" />
+          <button class="nav__catalog-btn blue-btn">
+            <img src="./image/Menu.svg" alt="Menu" />
+            Каталог
+          </button>
+          <div class="nav__search">
+            <input type="text" class="nav__input" />
+            <button class="nav__btn-search blue-btn">
+              <img src="./image/Search.svg" alt="Search" />
+            </button>
+          </div>
+          <div class="nav__cart-btn">
+            <img src="./image/Cart.svg" alt="Cart" />
+            Корзина
+            <div class="cart-badge">0</div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <div class="container">
+        <div class="main">
+          <div class="filter">
+            <p class="filter__title">Фильтр</p>
+            <div class="filter__price">
+              Цена
+              <div class="price-range">
+                <div class="price-range__wrap">
+                  <p class="price-range__label">от</p>
+                  <input type="text" class="price-range__input" placeholder="0" />
+                </div>
+                <div class="price-range__wrap">
+                  <p class="price-range__label">до</p>
+                  <input type="text" class="price-range__input" placeholder="10000" />
+                </div>
+              </div>
+            </div>
+            <label class="custom-checkbox">
+              <input type="checkbox" class="custom-checkbox__input" />
+              <span class="custom-checkbox__control"></span>
+              Акция
+            </label>
+
+            <label class="custom-checkbox">
+              <input type="checkbox" class="custom-checkbox__input" />
+              <span class="custom-checkbox__control"></span>
+              В наличии
+            </label>
+          </div>
+          <div class="console-list">
+            <div class="console-list__card">
+              <img src="./image/ps4pro.png" alt="ps4pro">
+              <p class="console-list__price">33990 ₽</p>
+              <p class="console-list__title">Игровая приставка Sony PlayStation 4 Pro</p>
+              <button class="console-list__btn blue-btn">
+                В корзину
+              </button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
