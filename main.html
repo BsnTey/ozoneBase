@@ -1,79 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" href="/css/reset.css" />
-  </head>
-  <body>
-    <nav class="nav">
-      <div class="container">
-        <div class="nav__wrapper">
-          <img src="./image/Logo.svg" alt="Logo" class="nav__logo" />
-          <button class="nav__catalog-btn blue-btn">
-            <img src="./image/Menu.svg" alt="Menu" />
-            Каталог
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/reset.css" />
+</head>
+
+<body class="blackout">
+  <nav class="nav">
+    <div class="container">
+      <div class="nav__wrapper">
+        <img src="./image/Logo.svg" alt="Logo" class="nav__logo" />
+        <button class="nav__catalog-btn blue-btn">
+          <img src="./image/Menu.svg" alt="Menu" />
+          Каталог
+        </button>
+        <div class="nav__search">
+          <input type="text" class="nav__input" />
+          <button class="nav__btn-search blue-btn">
+            <img src="./image/Search.svg" alt="Search" />
           </button>
-          <div class="nav__search">
-            <input type="text" class="nav__input" />
-            <button class="nav__btn-search blue-btn">
-              <img src="./image/Search.svg" alt="Search" />
-            </button>
-          </div>
-          <div class="nav__cart-btn">
-            <img src="./image/Cart.svg" alt="Cart" />
-            Корзина
-            <div class="cart-badge">0</div>
-          </div>
+        </div>
+        <div class="nav__cart-btn">
+          <img src="./image/Cart.svg" alt="Cart" />
+          Корзина
+          <div class="cart-badge">0</div>
         </div>
       </div>
-    </nav>
+    </div>
+  </nav>
 
-    <main>
-      <div class="container">
-        <div class="main">
-          <div class="filter">
-            <p class="filter__title">Фильтр</p>
-            <div class="filter__price">
-              Цена
-              <div class="price-range">
-                <div class="price-range__wrap">
-                  <p class="price-range__label">от</p>
-                  <input type="text" class="price-range__input" placeholder="0" />
-                </div>
-                <div class="price-range__wrap">
-                  <p class="price-range__label">до</p>
-                  <input type="text" class="price-range__input" placeholder="10000" />
-                </div>
+  <main>
+    <div class="container">
+      <div class="main">
+        <!-- <div class="blackout"> -->
+        <div class="cart-view">
+          <p class="cart-view__title">Корзина</p>
+          <p class="cart-view__cart-price">Общая сумма: <i class="cart-view__price">0</i> руб</p>
+          <button class="cart-view__order-btn blue-btn ">Оформить заказ</button>
+          <div class="cart-view__cart-list">Ваша корзина пока пуста</div>
+        </div>
+        <!-- </div> -->
+
+        <div class="filter">
+          <p class="filter__title">Фильтр</p>
+          <div class="filter__price">
+            Цена
+            <div class="price-range">
+              <div class="price-range__wrap">
+                <p class="price-range__label">от</p>
+                <input type="text" class="price-range__input" placeholder="0" />
+              </div>
+              <div class="price-range__wrap">
+                <p class="price-range__label">до</p>
+                <input type="text" class="price-range__input" placeholder="10000" />
               </div>
             </div>
-            <label class="custom-checkbox">
-              <input type="checkbox" class="custom-checkbox__input" />
-              <span class="custom-checkbox__control"></span>
-              Акция
-            </label>
-
-            <label class="custom-checkbox">
-              <input type="checkbox" class="custom-checkbox__input" />
-              <span class="custom-checkbox__control"></span>
-              В наличии
-            </label>
           </div>
-          <div class="console-list">
-            <div class="console-list__card">
-              <img src="./image/ps4pro.png" alt="ps4pro">
-              <p class="console-list__price">33990 ₽</p>
-              <p class="console-list__title">Игровая приставка Sony PlayStation 4 Pro</p>
-              <button class="console-list__btn blue-btn">
-                В корзину
-              </button>
-            </div>
+          <label class="custom-checkbox">
+            <input type="checkbox" class="custom-checkbox__input" />
+            <span class="custom-checkbox__control"></span>
+            Акция
+          </label>
 
+          <label class="custom-checkbox">
+            <input type="checkbox" class="custom-checkbox__input" />
+            <span class="custom-checkbox__control"></span>
+            В наличии
+          </label>
+        </div>
+        <div class="console-list">
+          <div class="console-list__card">
+            <img src="./image/ps4pro.png" alt="ps4pro">
+            <p class="console-list__price">33990 ₽</p>
+            <p class="console-list__title">Игровая приставка Sony PlayStation 4 Pro</p>
+            <button class="console-list__btn blue-btn">
+              В корзину
+            </button>
+            <div class="hot-sale-btn">
+              🔥Hot Sale🔥
+            </div>
           </div>
         </div>
       </div>
-    </main>
-  </body>
+    </div>
+  </main>
+</body>
+
 </html>
