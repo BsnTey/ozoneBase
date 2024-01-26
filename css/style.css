@@ -227,10 +227,10 @@ html {
 
 .cart-view {
   margin: auto;
-  display: flex;
+  display: none;
   flex-direction: column;
   position: absolute;
-  z-index: 3;
+  z-index: 4;
   background: #fff;
   top: 260px;
   width: 1280px;
@@ -244,6 +244,7 @@ html {
 }
 
 .cart-view__cart-price {
+  margin-top: 26px;
   font-size: 22px;
   font-weight: 400;
 }
@@ -273,9 +274,15 @@ html {
 }
 
 .blackout {
+  display: none;
   position: absolute;
-  z-index: 20;
+  z-index: 3;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.30);
+}
+
+.cart-view__header {
+  display: flex;
+  justify-content: space-between;
 }
