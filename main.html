@@ -27,7 +27,13 @@
           </div>
 
           <div class="nav__search">
-            <input type="text" class="nav__input" />
+            <div class="nav__input">
+              <input type="text"  />
+              <button class="nav__input-clear-btn">
+                <img src="./image/cross.svg" alt="cross" />
+              </button>
+            </div>
+
             <button class="nav__btn-search blue-btn">
               <img src="./image/Search.svg" alt="Search" />
             </button>
@@ -69,22 +75,22 @@
               <div class="price-range">
                 <div class="price-range__wrap">
                   <p class="price-range__label">от</p>
-                  <input type="text" class="price-range__input" placeholder="0" />
+                  <input type="number" inputmode="numeric" class="price-range__input" id="price-range__input-from" placeholder="0" />
                 </div>
                 <div class="price-range__wrap">
                   <p class="price-range__label">до</p>
-                  <input type="text" class="price-range__input" placeholder="10000" />
+                  <input type="number" inputmode="numeric" class="price-range__input" id="price-range__input-to" placeholder="10000" />
                 </div>
               </div>
             </div>
-            <label class="custom-checkbox">
-              <input type="checkbox" class="custom-checkbox__input" />
+            <label class="custom-checkbox" >
+              <input type="checkbox" class="custom-checkbox__input" id="promo-checkbox"/>
               <span class="custom-checkbox__control"></span>
               Акция
             </label>
 
             <label class="custom-checkbox">
-              <input type="checkbox" class="custom-checkbox__input" />
+              <input type="checkbox" class="custom-checkbox__input" id="availability-checkbox"/>
               <span class="custom-checkbox__control"></span>
               В наличии
             </label>

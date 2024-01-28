@@ -70,9 +70,24 @@ html {
 }
 
 .nav__input {
+  display: flex;
+  /* align-items: center; */
   width: 100%;
   border-radius: 3px 0px 0px 3px;
   border: 2px solid #005bff;
+}
+
+.nav__input input {
+  padding: 0 10px;
+  width: 100%;
+  height: 100%;
+}
+
+.nav__input-clear-btn {
+  display: flex;
+  align-items: center;
+  width: 16px;
+  margin-right: 10px;
 }
 
 .nav__btn-search {
@@ -156,6 +171,10 @@ html {
   border: 1px solid #c5c5c5;
   width: 70px;
   height: 27px;
+}
+
+.price-range__input:hover, .price-range__input:focus {
+  border: 1px solid #005bff;
 }
 
 .custom-checkbox {
@@ -255,6 +274,12 @@ html {
   border-radius: 2px;
   background: #005bff;
   padding: 7px 0px;
+}
+
+.console-list__card-btn:disabled {
+  background-color: #e5e5e5;
+  color: #737373;
+  cursor: not-allowed;
 }
 
 .hot-sale-btn {

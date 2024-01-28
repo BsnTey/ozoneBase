@@ -6,12 +6,29 @@ const consoleList = document.querySelector(".console-list");
 const cartViewCartList = document.querySelector(".cart-view__cart-list");
 const cartViewCartListEmpty = document.querySelector(".cart-view__cart-list-empty");
 const cartViewPrice = document.querySelector(".cart-view__price");
+const promoCheckbox = document.getElementById("promo-checkbox");
+const availabilityСheckbox = document.getElementById("availability-checkbox");
+const navInput = document.querySelector(".nav__input input");
+const navBtnSearch = document.querySelector(".nav__btn-search");
+const navInputClearBtn = document.querySelector(".nav__input-clear-btn");
 
-const cartItemCounterMinus = document.querySelector(".cart-item-counter-minus");
+const priceRangeInputFrom = document.getElementById("price-range__input-from");
+const priceRangeInputTo = document.getElementById("price-range__input-to");
 
+let dataItems = [];
 let consoleCart = [];
 let countCart = 0;
 let countCartPrice = 0;
+let isPromoState = false;
+let isAvailabilityState = false;
+
+let searchItemText = "";
+let priceRangeFrom = 0;
+let priceRangeTo = 999990;
+
+navInput.addEventListener("input", () => {
+  searchItemText = navInput.value;
+});
 
 navCartBtn.addEventListener("click", () => {
   blackout.style.display = "block";
@@ -28,6 +45,42 @@ blackout.addEventListener("click", () => {
   cartview.style.display = "none";
 });
 
+navInputClearBtn.addEventListener("click", () => {
+  searchItemText = "";
+  navInput.value = "";
+  const filterArr = dataItems.filter((item) => filterData(item));
+  renderData(filterArr);
+});
+
+navBtnSearch.addEventListener("click", () => {
+  const filterArr = dataItems.filter((item) => filterData(item));
+  renderData(filterArr);
+});
+
+promoCheckbox.addEventListener("click", () => {
+  isPromoState = !isPromoState;
+  const filterArr = dataItems.filter((item) => filterData(item));
+  renderData(filterArr);
+});
+
+availabilityСheckbox.addEventListener("click", () => {
+  isAvailabilityState = !isAvailabilityState;
+  const filterArr = dataItems.filter((item) => filterData(item));
+  renderData(filterArr);
+});
+
+priceRangeInputFrom.addEventListener("change", () => {
+  priceRangeFrom = priceRangeInputFrom.value ? priceRangeInputFrom.value : 0;
+  const filterArr = dataItems.filter((item) => filterData(item));
+  renderData(filterArr);
+});
+
+priceRangeInputTo.addEventListener("change", () => {
+  priceRangeTo = priceRangeInputTo.value ? priceRangeInputTo.value : 999990;
+  const filterArr = dataItems.filter((item) => filterData(item));
+  renderData(filterArr);
+});
+
 const getData = async () => {
   return await fetch("https://mocki.io/v1/085d2dca-28f1-4d4f-8e1c-6e319bbcdc67").then((response) => {
     if (response.ok) {
@@ -38,8 +91,30 @@ const getData = async () => {
   });
 };
 
+const filterData = (item) => {
+  if (isPromoState) {
+    if (!item.sale) return false;
+  }
+
+  if (isAvailabilityState) {
+    if (!item.availability) return false;
+  }
+
+  if (searchItemText != "") {
+    const title = item.title.toUpperCase();
+    if (!title.includes(searchItemText.toUpperCase())) return false;
+  }
+
+  if (item.price < priceRangeFrom) return false;
+  if (item.price > priceRangeTo) return false;
+
+  return true;
+};
+
 const renderData = (items) => {
-  items.goods.forEach((item) => {
+  consoleList.innerHTML = "";
+
+  items.forEach((item) => {
     const card = document.createElement("div");
     card.className = "console-list__card";
 
@@ -50,15 +125,15 @@ const renderData = (items) => {
       <div>
         <p class="console-list__card-price">${item.price} ₽</p>
         <p class="console-list__card-title">${item.title}</p>
-        <button class="console-list__card-btn blue-btn">В корзину</button>
-        ${item.availability ? '<div class="hot-sale-btn">🔥Hot Sale🔥</div>' : ""}
+        <button class="console-list__card-btn blue-btn" disabled>В корзину</button>
+        ${item.sale ? '<div class="hot-sale-btn">🔥Hot Sale🔥</div>' : ""}
       </div>
   `;
     item.count = 0;
-    consoleList.appendChild(card);
 
     const btnClick = card.querySelector(".console-list__card-btn");
-
+    if (item.availability) btnClick.disabled = false;
+    consoleList.appendChild(card);
     btnClick.addEventListener("click", () => {
       changeCountItemsCart(item, 1);
       createOrChangeCountBadge();
@@ -107,7 +182,8 @@ const createOrChangeCountBadge = () => {
 };
 
 getData().then((data) => {
-  renderData(data);
+  dataItems = data.goods;
+  renderData(data.goods);
 });
 
 navCartBtn.addEventListener("click", () => {
