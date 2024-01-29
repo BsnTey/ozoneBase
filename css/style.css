@@ -13,6 +13,10 @@ html {
   padding-top: 23px;
 }
 
+.nav__logo {
+  width: 220px;
+}
+
 .blue-btn {
   color: #fff;
   font-size: 14px;
@@ -173,7 +177,8 @@ html {
   height: 27px;
 }
 
-.price-range__input:hover, .price-range__input:focus {
+.price-range__input:hover,
+.price-range__input:focus {
   border: 1px solid #005bff;
 }
 

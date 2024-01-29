@@ -1,4 +1,5 @@
 const closeBtnCart = document.querySelector(".cart-view__close-btn");
+const navLogo = document.querySelector(".nav__logo");
 const blackout = document.querySelector(".blackout");
 const cartview = document.querySelector(".cart-view");
 const navCartBtn = document.querySelector(".nav__cart-btn");
@@ -15,6 +16,10 @@ const navInputClearBtn = document.querySelector(".nav__input-clear-btn");
 const priceRangeInputFrom = document.getElementById("price-range__input-from");
 const priceRangeInputTo = document.getElementById("price-range__input-to");
 
+const navCatalogItemPc = document.getElementById("nav__catalog-item-pc");
+const navCatalogItemGame = document.getElementById("nav__catalog-item-game");
+const navCatalogItemConsole = document.getElementById("nav__catalog-item-console");
+
 let dataItems = [];
 let consoleCart = [];
 let countCart = 0;
@@ -25,6 +30,31 @@ let isAvailabilityState = false;
 let searchItemText = "";
 let priceRangeFrom = 0;
 let priceRangeTo = 999990;
+
+
+navLogo.addEventListener("click", () => {
+  history.pushState(null, "", "/main.html");
+  const filterArr = dataItems.filter((item) => filterData(item));
+  renderData(filterArr);
+});
+
+navCatalogItemPc.addEventListener("click", () => {
+  history.pushState(null, "", "/pc");
+  const filterArr = dataItems.filter((item) => filterData(item));
+  renderData(filterArr);
+});
+
+navCatalogItemGame.addEventListener("click", () => {
+  history.pushState(null, "", "/game");
+  const filterArr = dataItems.filter((item) => filterData(item));
+  renderData(filterArr);
+});
+
+navCatalogItemConsole.addEventListener("click", () => {
+  history.pushState(null, "", "/console");
+  const filterArr = dataItems.filter((item) => filterData(item));
+  renderData(filterArr);
+});
 
 navInput.addEventListener("input", () => {
   searchItemText = navInput.value;
@@ -107,6 +137,18 @@ const filterData = (item) => {
 
   if (item.price < priceRangeFrom) return false;
   if (item.price > priceRangeTo) return false;
+
+  if (window.location.pathname === "/pc") {
+    if (item.category !== "Периферия для ПК") return false;
+  }
+
+  if (window.location.pathname === "/game") {
+    if (item.category !== "Игры и софт") return false;
+  }
+
+  if (window.location.pathname === "/console") {
+    if (item.category !== "Игровая приставка") return false;
+  }
 
   return true;
 };
